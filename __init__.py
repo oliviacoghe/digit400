@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for, flash, redirect, request, session
+from flask import Flask, render_template, url_for, flash, redirect, request, session, make_response
+from datetime import datetime, timedelta 
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from pymysql import escape_string as thwart
@@ -136,7 +137,22 @@ def dashboard():
         return render_template("dashboard.html", APP_CONTENT = APP_CONTENT)
     except Exception as e:
         return render_template("500.html", error = e)
+
+@app.route('/sitemap.xml/', methods=['GET'])
+def sitemap():
+    try:
+        pages = []
+        week = (datetime.now()- timedelta(days = 7)).date().isoformat()
+        for rule in app.url_map.iter_rules():
+            if "GET" in rule.methods and len(rule.arguments)==0:
+                pages.append(["http://142.93.253.142" +str(rule.rule),week])
+        sitemap_xml = render_template('sitemap_template.xml', pages = pages)
+        response = make_response(sitemap_xml)
+        response.headers["Content-Type"] = "application/xml"
+        return response 
     
+    except Exception as e:
+        return(str(e))
 
 
 @app.errorhandler(404)
