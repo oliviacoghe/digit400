@@ -147,6 +147,13 @@ def dashboard():
         return render_template("dashboard.html", APP_CONTENT = APP_CONTENT)
     except Exception as e:
         return render_template("500.html", error = e)
+    
+@app.route("/about/")
+def about():
+    try:
+        return render_template("about.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
 
 @app.route('/sitemap.xml/', methods=['GET'])
 def sitemap():
@@ -163,6 +170,8 @@ def sitemap():
     
     except Exception as e:
         return(str(e))
+    
+
 
 
 @app.errorhandler(404)
