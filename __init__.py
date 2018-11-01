@@ -53,6 +53,16 @@ def hello():
     except Exception as e:
         return render_template("500.html", error = e)
     
+@app.route("/welcome/")
+@login_required
+def templating():
+    try:
+        output =["DIGIT is good", "python, Java, php, SQL, C++","<p><strong>hello!</strong><P>",42, "42"]
+        return render_template("templating_demo.html", output = output)
+        
+    except Exception as e:
+        return(str(e)) #remove for production
+    
 @app.route("/login/", methods = ["GET", "POST"])
 def login():    
     error = ""
