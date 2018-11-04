@@ -33,11 +33,7 @@
             })
       </script>
       
-      <!-- Pinterest Layout -->
-      
-      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
       
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128138146-1"></script>
@@ -48,185 +44,6 @@
 
       gtag('config', 'UA-128138146-1');
     </script>
-      
-    <script>
-      $(document).ready(function() {
-$('#pinBoot').pinterest_grid({
-no_columns: 4,
-padding_x: 10,
-padding_y: 10,
-margin_bottom: 50,
-single_column_breakpoint: 700
-});
-});
-
-/*
-Ref:
-Thanks to:
-http://www.jqueryscript.net/layout/Simple-jQuery-Plugin-To-Create-Pinterest-Style-Grid-Layout-Pinterest-Grid.html
-*/
-
-
-/*
-    Pinterest Grid Plugin
-    Copyright 2014 Mediademons
-    @author smm 16/04/2014
-
-    usage:
-
-     $(document).ready(function() {
-
-        $('#blog-landing').pinterest_grid({
-            no_columns: 4
-        });
-
-    });
-
-
-*/
-;(function ($, window, document, undefined) {
-    var pluginName = 'pinterest_grid',
-        defaults = {
-            padding_x: 10,
-            padding_y: 10,
-            no_columns: 3,
-            margin_bottom: 50,
-            single_column_breakpoint: 700
-        },
-        columns,
-        $article,
-        article_width;
-
-    function Plugin(element, options) {
-        this.element = element;
-        this.options = $.extend({}, defaults, options) ;
-        this._defaults = defaults;
-        this._name = pluginName;
-        this.init();
-    }
-
-    Plugin.prototype.init = function () {
-        var self = this,
-            resize_finish;
-
-        $(window).resize(function() {
-            clearTimeout(resize_finish);
-            resize_finish = setTimeout( function () {
-                self.make_layout_change(self);
-            }, 11);
-        });
-
-        self.make_layout_change(self);
-
-        setTimeout(function() {
-            $(window).resize();
-        }, 500);
-    };
-
-    Plugin.prototype.calculate = function (single_column_mode) {
-        var self = this,
-            tallest = 0,
-            row = 0,
-            $container = $(this.element),
-            container_width = $container.width();
-            $article = $(this.element).children();
-
-        if(single_column_mode === true) {
-            article_width = $container.width() - self.options.padding_x;
-        } else {
-            article_width = ($container.width() - self.options.padding_x * self.options.no_columns) / self.options.no_columns;
-        }
-
-        $article.each(function() {
-            $(this).css('width', article_width);
-        });
-
-        columns = self.options.no_columns;
-
-        $article.each(function(index) {
-            var current_column,
-                left_out = 0,
-                top = 0,
-                $this = $(this),
-                prevAll = $this.prevAll(),
-                tallest = 0;
-
-            if(single_column_mode === false) {
-                current_column = (index % columns);
-            } else {
-                current_column = 0;
-            }
-
-            for(var t = 0; t < columns; t++) {
-                $this.removeClass('c'+t);
-            }
-
-            if(index % columns === 0) {
-                row++;
-            }
-
-            $this.addClass('c' + current_column);
-            $this.addClass('r' + row);
-
-            prevAll.each(function(index) {
-                if($(this).hasClass('c' + current_column)) {
-                    top += $(this).outerHeight() + self.options.padding_y;
-                }
-            });
-
-            if(single_column_mode === true) {
-                left_out = 0;
-            } else {
-                left_out = (index % columns) * (article_width + self.options.padding_x);
-            }
-
-            $this.css({
-                'left': left_out,
-                'top' : top
-            });
-        });
-
-        this.tallest($container);
-        $(window).resize();
-    };
-
-    Plugin.prototype.tallest = function (_container) {
-        var column_heights = [],
-            largest = 0;
-
-        for(var z = 0; z < columns; z++) {
-            var temp_height = 0;
-            _container.find('.c'+z).each(function() {
-                temp_height += $(this).outerHeight();
-            });
-            column_heights[z] = temp_height;
-        }
-
-        largest = Math.max.apply(Math, column_heights);
-        _container.css('height', largest + (this.options.padding_y + this.options.margin_bottom));
-    };
-
-    Plugin.prototype.make_layout_change = function (_self) {
-        if($(window).width() < _self.options.single_column_breakpoint) {
-            _self.calculate(true);
-        } else {
-            _self.calculate(false);
-        }
-    };
-
-    $.fn[pluginName] = function (options) {
-        return this.each(function () {
-            if (!$.data(this, 'plugin_' + pluginName)) {
-                $.data(this, 'plugin_' + pluginName,
-                new Plugin(this, options));
-            }
-        });
-    }
-
-})(jQuery, window, document);
-      </script>
-      
-
 
       
   </head>
@@ -236,9 +53,9 @@ http://www.jqueryscript.net/layout/Simple-jQuery-Plugin-To-Create-Pinterest-Styl
       
     
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-md navbar-light bg-light">
           
-  <a class="navbar-brand" href="/"> <img src="{{ url_for('static', filename='images/mainlogo.png') }}" width="60" height="60" class="d-inline-block align-top" alt="site logo"></a>
+  <a class="navbar-brand" href="/"> <img src="{{ url_for('static', filename='images/mainlogo.png') }}" width="60" height="20" class="d-inline-block align-top" alt="site logo"></a>
           
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       
@@ -276,80 +93,88 @@ http://www.jqueryscript.net/layout/Simple-jQuery-Plugin-To-Create-Pinterest-Styl
 <!-- Pinterest Code -->
       
     
-      
-      <div class="container">
-  <div class="row">
-    <h2>Pinterest Responsive Grid</h2>
-
-    <p>Best viewed <a href="http://bootsnipp.com/iframe/Zkk0O" target="_blank">full screen</a>
-    </p>
-    <hr>
-    <section id="pinBoot">
-
-      <article class="white-panel"><img src="http://i.imgur.com/sDLIAZD.png" alt="">
-        <h4><a href="#">Title 1</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/8lhFhc1.gif" alt="">
-        <h4><a href="#">Title 2</a></h4>
-        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/xOIMvAe.jpg" alt="">
-        <h4><a href="#">Title 3</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      </article>
-
-
-      <article class="white-panel"> <img src="http://i.imgur.com/3gXW3L3.jpg" alt="">
-        <h4><a href="#">Title 4</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/o2RVMqm.jpg" alt="">
-        <h4><a href="#">Title 5</a></h4>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/kFFpuKA.jpg" alt="">
-        <h4><a href="#">Title 6</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      </article>
-
-
-
-      <article class="white-panel"><img src="http://i.imgur.com/E9RmLPA.jpg" alt="">
-        <h4><a href="#">Title 7</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/8lhFhc1.gif" alt="">
-        <h4><a href="#">Title 8</a></h4>
-        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-    </section>
-
-
-    <hr>
-
-
+<div class="container">
+     <div class="card-columns">
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title that wraps to a new line</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
   </div>
-  <p>
-    <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fbootsnipp.com%2Fiframe%2FZkk0O" target="_blank"><small>HTML</small><sup>5</sup></a>
-    <br>
-    <br>
-
-  </p>
-
+  <div class="card p-3">
+    <blockquote class="blockquote mb-0 card-body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <footer class="blockquote-footer">
+        <small class="text-muted">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card bg-primary text-white text-center p-3">
+    <blockquote class="blockquote mb-0">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+      <footer class="blockquote-footer">
+        <small>
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img" src="..." alt="Card image">
+  </div>
+  <div class="card p-3 text-right">
+    <blockquote class="blockquote mb-0">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <footer class="blockquote-footer">
+        <small class="text-muted">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+      <div class="card p-3 text-right">
+    <blockquote class="blockquote mb-0">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <footer class="blockquote-footer">
+        <small class="text-muted">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
 </div>
-      
+    </div>
     
   
 <!-- Button trigger modal -->
