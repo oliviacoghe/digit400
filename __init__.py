@@ -154,6 +154,13 @@ def about():
         return render_template("about.html")
     except Exception as e:
         return render_template("500.html", error = e)
+    
+@app.route("/cubism/")
+def cubism():
+    try:
+        return render_template("cubism.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
 
 @app.route('/sitemap.xml/', methods=['GET'])
 def sitemap():

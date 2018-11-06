@@ -15,7 +15,7 @@
       <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
       
       <!-- Favicon -->
-      <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+      <link rel="shortcut icon" href="{{url_for('static', filename='images/approachableart.png')}}">
       
       <!-- Material Design Icon -->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -76,9 +76,7 @@
       </li>
         {% if session.logged_in %}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Explore
-        </a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">explore</i>Explore</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/dashboard/">Dashboard</a>
           <a class="dropdown-item" href="/about/">About</a>
@@ -93,7 +91,7 @@
       <!-- END nav -->
       
 
-      <img class = "center-block" src="{{ url_for('static', filename='images/approachableart.png') }}" width="300" height="200">
+      <img class = "center-block;" src="{{ url_for('static', filename='images/approachableart.png') }}" width="300" height="220">
       
      
 
@@ -104,10 +102,10 @@
      <div class="card-columns">
    <div class="card bg-primary text-white text-center p-3">
     <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+      <p>“We don't make mistakes, just happy little accidents”</p>
       <footer class="blockquote-footer">
         <small>
-          Someone famous in <cite title="Source Title">Source Title</cite>
+           <cite title="Source Title">Bob Ross</cite>
         </small>
       </footer>
     </blockquote>
@@ -115,7 +113,7 @@
   <div class="card">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
+      <h5 class="card-title">Impressionism</h5>
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     </div>
   </div>
@@ -138,7 +136,7 @@
   </div>
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+      <h5 class="card-title">Cubism</h5>
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
