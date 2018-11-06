@@ -78,7 +78,7 @@ def login():
                 session['logged_in'] = True
                 session['username'] = request.form['username']
                 
-                flash("You are now logged in" + session['username'])
+                flash("You are now logged in " + session['username'])
                 return redirect(url_for("dashboard"))
             else:
                 error = "Invalid credentials. Try again!"
