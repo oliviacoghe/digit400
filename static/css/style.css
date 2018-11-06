@@ -1,0 +1,10 @@
+.nav{
+    min-height: 40px;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
