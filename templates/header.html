@@ -15,7 +15,7 @@
       <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
       
       <!-- Favicon -->
-      <link rel="shortcut icon" href="{{url_for('static', filename='images/approachableart.png')}}">
+      <link rel="shortcut icon" href="{{url_for('static', filename='images/approachableart.png')}}" width="65" height ="50">
       
       <!-- Material Design Icon -->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -79,7 +79,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">explore</i>Mediums</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/about/">Details</a>
-          <a class="dropdown-item" href="/about/">Artisans</a>
+          <a class="dropdown-item" href="#">Artisans</a>
           <a class="dropdown-item" href="#">Assemblage</a>
         </div>
       </li>
@@ -160,7 +160,7 @@
 <footer class="pt-4 my-md-5 pt-md-5 border-top" style="margin-left:2%;margin-right:2%;">
   <div class="row">
     <div class="col-12 col-md">
-      <img class="mb-2" src="{{ url_for('static', filename='images/mainlogo.png') }}" alt="footer logo" width="60" height="60"><p>This is a project developed for the students of Penn State Behrend in DIGIT 400.</p> <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+      <img src="{{ url_for('static', filename='images/approachableart.png') }}" width="65" height="50" class="d-inline-block align-top" alt="site logo"><p>This is a project developed for the students of Penn State Behrend in DIGIT 400.</p> <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
     </div>
     <div class="col-6 col-md">
       <h5>Features</h5>
