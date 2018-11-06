@@ -59,24 +59,30 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#"><i class="material-icons">home</i> Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/"><i class="material-icons">home</i> Architecture <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#"><i class="material-icons">palette</i>Login</a>
-        </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="material-icons">web</i>Features</a>
-      </li>
-        {% if session.logged_in %}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">explore</i>Explore</a>
+          {% if session.logged_in %}
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">palette</i>Profile</a> 
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/logout/">Logout</a>
+            </div>
+          {% else %}
+           <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#"><i class="material-icons">palette</i>Profile</a>
+          
+        </li>
+          {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard/"><i class="material-icons">web</i>Gallery</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">explore</i>Mediums</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/dashboard/">Dashboard</a>
-          <a class="dropdown-item" href="/about/">About</a>
-          <a class="dropdown-item" href="#">Logout</a>
+          <a class="dropdown-item" href="/about/">Details</a>
+          <a class="dropdown-item" href="/about/">Artisans</a>
+          <a class="dropdown-item" href="#">Assemblage</a>
         </div>
       </li>
-        {% endif %}
     </ul>
   </div>
 </nav>

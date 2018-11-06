@@ -92,10 +92,10 @@ def login():
 @app.route("/logout/")
 @login_required
 def logout():
-    sessoin.clear()
+    session.clear()
     flash("You have been logged out!")
     gc.collect()
-    return redirect(url_for('main'))
+    return redirect(url_for("login"))
 
 class RegistrationForm(Form):
     username = TextField("Username", [validators.Length(min=4, max=20)])
