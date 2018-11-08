@@ -1,14 +1,20 @@
-from flask import Flask, render_template, url_for, flash, redirect, request, session, make_response
+from flask import Flask, render_template, url_for, flash, redirect, request, session, make_response, send_file
 from datetime import datetime, timedelta 
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from pymysql import escape_string as thwart
 import gc
 from functools import wraps 
+from werkzeug.utils import secure_filename 
+import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 
-from .db_connect import connection 
+from db_connect import connection 
+
+UPLOADS_FOLDER = '/var/www/FlaskApp/FlaskApp/uploads'
+ALLOWED_EXTENSIONS = set(["txt", "pdf", "png", "jpeg", "jpg", "gif"])
 app = Flask(__name__)
+app.config["UPLOADS_FOLDER"] = UPLOADS_FOLDER
 
 def login_required(f):
     @wraps(f)
@@ -19,6 +25,9 @@ def login_required(f):
             flash("Please login.")
             return redirect(url_for('login'))
     return wrap
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS 
     
 # CMS Structure title, path, message
 APP_CONTENT = {
@@ -61,7 +70,7 @@ def templating():
         return render_template("templating_demo.html", output = output)
         
     except Exception as e:
-        return(str(e)) #remove for production
+        return(str(e)) 
     
 @app.route("/login/", methods = ["GET", "POST"])
 def login():    
@@ -147,6 +156,50 @@ def dashboard():
         return render_template("dashboard.html", APP_CONTENT = APP_CONTENT)
     except Exception as e:
         return render_template("500.html", error = e)
+    
+@app.route("/uploads", methods =["GET", "POST"])
+@login_required
+def upload_file():
+    try:
+        if request.method == "POST":
+            if 'file' not in request.files: 
+                flash('Incomplete filename. Please add valid file type suffix.')
+                return redirect(request.url)
+            file = request.files['file']
+            if file.filename == '':
+                flash("incomplete filename. Please add valid filename.")
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename) 
+                file.save(os.path.join(app.config["UPLOADS_FOLDER"], filename))
+                flash("File upload successful.")
+                return render_template("uploads.html", filename = filename)
+            else:
+                flash("Invalid file type. Please add valid filename.")
+                return redirect(request.url)
+        return render_template("uploads.html")
+    except Exception as e:
+        return(str(e))
+@app.route("/download/")
+@login_required
+def download():
+    try:
+        return send_file('/var/www/FlaskApp/FlaskApp/uploads/screencap.png', attachment_filename="screencap.png")
+    except Exception as e:
+        return(str(e)) 
+    
+@app.route("/downloader/", methods=["GET","POST"])
+@login_required
+def downloader():
+    error = ''
+    try:
+        if request.method == "POST":
+            filename = request.form['filename']
+            return send_file('/var/www/FlaskApp/FlaskApp/uploads/'+filename, attachment_filename='download')
+        return render_template('downloader.html', error = error)
+    
+    except Exception as e:
+        return(str(e)) 
     
 @app.route("/about/")
 def about():
