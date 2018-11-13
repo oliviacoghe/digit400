@@ -10,6 +10,7 @@ import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 
 from db_connect import connection 
+from database import database 
 
 UPLOADS_FOLDER = '/var/www/FlaskApp/FlaskApp/uploads'
 ALLOWED_EXTENSIONS = set(["txt", "pdf", "png", "jpeg", "jpg", "gif"])
@@ -172,6 +173,7 @@ def upload_file():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename) 
                 file.save(os.path.join(app.config["UPLOADS_FOLDER"], filename))
+                database(session['username'], filename)
                 flash("File upload successful.")
                 return render_template("uploads.html", filename = filename)
             else:

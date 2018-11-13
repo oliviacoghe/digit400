@@ -25,6 +25,7 @@
 *.log
 *.sql
 *.sqlite
+*.db
 
 # OS generated files #
 ######################
@@ -37,3 +38,6 @@ ehthumbs.db
 Thumbs.db
 db_connect.py
 db_connect.pyc
+database.py
+database.pyc
+
