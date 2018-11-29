@@ -1,0 +1,26 @@
+{% extends "header.html" %}
+{% block body %}
+  <div class="container">
+
+      <h1>Google Image Library of Artists</h1>
+      <p>Please enter an artists' last name! Try Dali</p>
+      
+
+        <form method="post" action="/googleimg/">
+
+          <p><input type="text" class="form-control" placeholder="Enter last name" name="arguments" value="{{request.form.arguements}}"></p>
+
+          <p><input class="btn btn-primary" type="submit" value=""></p>
+
+        </form>
+	
+        <br>
+
+        <code>{{error}}</code>
+
+	  </div>
+
+{{file_list}}
+
+
+{% endblock %}

@@ -7,6 +7,7 @@ import gc
 from functools import wraps 
 from werkzeug.utils import secure_filename 
 import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+from google_images_download import google_images_download
 
 
 from db_connect import connection 
@@ -200,6 +201,22 @@ def downloader():
             return send_file('/var/www/FlaskApp/FlaskApp/uploads/'+filename, attachment_filename='download')
         return render_template('downloader.html', error = error)
     
+    except Exception as e:
+        return(str(e)) 
+    
+@app.route("/googleimg/", methods =["GET", "POST"])
+def img_fetch():
+    error = ''
+    try:
+        vis_path = '/var/www/FlaskApp/FlaskApp/downloads/'
+        file_list = []
+        for paths, subdirs, files in os.walk(vis_path):
+            for file in files:
+                a = os.path.join(file)
+                file_list.append(a)
+        
+        return render_template('googleimg.html', error=error, file_list=file_list)
+            
     except Exception as e:
         return(str(e)) 
     

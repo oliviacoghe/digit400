@@ -10,4 +10,3 @@ paths = response.download(arguments)
 print(paths)
 
 # a folder labbed downloads should appear on your desktop 
-# the path for this file on my machine is /Users/Coghe/Desktop/
