@@ -8,7 +8,7 @@ from functools import wraps
 from werkzeug.utils import secure_filename 
 import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from google_images_download import google_images_download
-
+from random import shuffle
 
 from db_connect import connection 
 from database import database 
@@ -231,6 +231,20 @@ def about():
 def cubism():
     try:
         return render_template("cubism.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
+    
+@app.route("/Baroque/")
+def Baroque():
+    try:
+        return render_template("Baroque.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
+    
+@app.route("/VincentVanGogh/")
+def VincentVanGogh():
+    try:
+        return render_template("VincentVanGogh.html")
     except Exception as e:
         return render_template("500.html", error = e)
 
