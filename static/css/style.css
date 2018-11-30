@@ -1,3 +1,7 @@
 .card-columns {
     column-count: 3;
 }
+
+.nav_button {
+    align-self: left;
+}

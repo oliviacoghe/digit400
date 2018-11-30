@@ -35,7 +35,7 @@ def allowed_file(filename):
 APP_CONTENT = {
     "Home":[["My Home","/","Welcome back!, see what new stories are available for you."],["Gallery","/googleimg/","Explore the gallery and discover what you want to learn next."],["Forum","/messages/","Interact with other members of Approachable Art!"]], 
     
-    "Profile":[["User Profile","/userprofile/","Edit your profile here!"],["Terms of Service", "/tos/","The legal stuff!"],["Photo Upload", "/upload", "Upload your user profile photo here."],],
+    "Profile":[["User Profile","/userprofile/","Edit your profile here!"],["Photo Upload", "/uploads/", "Upload your user profile photo here."],["Contact Us", "/contact/","Reach out and let us know whats up!"],],
     
 }
 
@@ -162,7 +162,7 @@ def dashboard():
     except Exception as e:
         return render_template("500.html", error = e)
     
-@app.route("/uploads", methods =["GET", "POST"])
+@app.route("/uploads/", methods =["GET", "POST"])
 @login_required
 def upload_file():
     try:
