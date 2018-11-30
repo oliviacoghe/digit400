@@ -8,11 +8,14 @@ from functools import wraps
 from werkzeug.utils import secure_filename 
 import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from google_images_download import google_images_download
-import random 
+from google_img_lib import image_fetcher
+import random
+import pickle
 
 from db_connect import connection 
 from database import database 
 
+#sys.executable("/var/www/FlaskApp/FlaskApp/google_img_lib.py")
 UPLOADS_FOLDER = '/var/www/FlaskApp/FlaskApp/uploads'
 ALLOWED_EXTENSIONS = set(["txt", "pdf", "png", "jpeg", "jpg", "gif"])
 app = Flask(__name__)
@@ -33,7 +36,7 @@ def allowed_file(filename):
     
 # CMS Structure title, path, message
 APP_CONTENT = {
-    "Home":[["My Home","/","Welcome back!, see what new stories are available for you."],["Gallery","/googleimg/","Explore the gallery and discover what you want to learn next."],["Forum","/messages/","Interact with other members of Approachable Art!"]], 
+    "Home":[["My Home","/","Welcome back! see what new stories are available for you."],["Gallery","/googleimg/","Explore the gallery and discover what you want to learn next."],["Forum","/forum/","Interact with other members of Approachable Art!"]], 
     
     "Profile":[["User Profile","/userprofile/","Edit your profile here!"],["Photo Upload", "/uploads/", "Upload your user profile photo here."],["Contact Us", "/contact/","Reach out and let us know whats up!"],],
     
@@ -64,6 +67,7 @@ def hello():
             return render_template("main.html")
     except Exception as e:
         return render_template("500.html", error = e)
+    
     
 @app.route("/welcome/")
 @login_required
@@ -206,19 +210,27 @@ def downloader():
     
     except Exception as e:
         return(str(e)) 
-    
+
+
 @app.route("/googleimg/", methods =["GET", "POST"])
 def img_fetch():
     error = ''
+    file_list = []
     try:
-        vis_path = '/var/www/FlaskApp/FlaskApp/downloads/'
-        file_list = []
-        for paths, subdirs, files in os.walk(vis_path):
-            for file in files:
-                a = os.path.join(file)
-                file_list.append(a)
+        if request.method == "POST":
+            artist_name = request.form['arguments']
+
+            paths = image_fetcher(artist_name) #need to add permissions for google library here
+            vis_path = '/var/www/FlaskApp/FlaskApp/downloads/'
         
-        return render_template('googleimg.html', error=error, file_list=file_list)
+            for paths, subdirs, files in os.walk(vis_path):
+                for file in files:
+                    a = os.path.join(file)
+                    file_list.append(a)
+            
+            return render_template('googleimg.html',error=error,file_list=file_list)
+        
+        return render_template('googleimg.html', error=error,file_list=file_list)
             
     except Exception as e:
         return(str(e)) 
@@ -250,6 +262,13 @@ def VincentVanGogh():
         return render_template("VincentVanGogh.html")
     except Exception as e:
         return render_template("500.html", error = e)
+
+@app.route("/random/")
+def random():
+    import random
+    pages = ['cubism','Baroque', 'VincentVanGogh']
+    choice_page = random.choice(pages)
+    return redirect(url_for(choice_page))
 
 @app.route('/sitemap.xml/', methods=['GET'])
 def sitemap():

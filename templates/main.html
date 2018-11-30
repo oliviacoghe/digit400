@@ -86,7 +86,7 @@
       </li>
    <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
-    <button id="nav_button" class="btn btn-sm btn-outline-secondary" type="button">Random!</button>
+      <a href="/random/"><button id="nav_button" class="btn btn-sm btn-outline-secondary" type="button">Random!</button></a>
   </form>
 </nav>
     </ul>
@@ -119,6 +119,7 @@
     <div class="card-body">
       <h5 class="card-title">Impressionism</h5>
       <p class="card-text">A movement in painting that originated in France and was charaterized by effects of light and color.</p>
+        <button type="button" class="btn btn-warning"><a href="#">Read more!</a></button>
     </div>
   </div>
   <div class="card p-3">
@@ -145,7 +146,7 @@
       <p class="card-text">The movement was started by Pablo Picasso and Georges Braque in Paris between 1907 and 1914. </p>
     </div>
       <button type="button" class="btn btn-warning"><a href="/cubism/">Read more!</a></button>
-      <br>
+      <hr>
       <img class="card-img-top" src="{{ url_for('static', filename='images/picasso.jpg') }}" alt="Card image cap">
   </div>
   <div class="card p-3 text-right">
@@ -175,6 +176,7 @@
       <p class="card-text">I am sure you learned this in elementary school art class, you just didn't know it.</p>
     </div>
       <button type="button" class="btn btn-warning"><a href="#">Read more!</a></button>
+      <hr> 
   </div>
          
   <div class="card text-center">

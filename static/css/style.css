@@ -3,5 +3,9 @@
 }
 
 .nav_button {
-    align-self: left;
+    padding-left: 40;
+}
+
+.card-body{
+    align-content: center;
 }
