@@ -8,7 +8,7 @@ from functools import wraps
 from werkzeug.utils import secure_filename 
 import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from google_images_download import google_images_download
-from random import shuffle
+import random 
 
 from db_connect import connection 
 from database import database 
@@ -33,12 +33,13 @@ def allowed_file(filename):
     
 # CMS Structure title, path, message
 APP_CONTENT = {
-    "Home":[["Welcome","/welcome/","Welcome to my App, you can do many things here."],["Background","/about/","We had a lot of fun building this app. Learn more about our story"],["Messages","/messages/","Get your messages from the community!"]], 
+    "Home":[["My Home","/","Welcome back!, see what new stories are available for you."],["Gallery","/googleimg/","Explore the gallery and discover what you want to learn next."],["Forum","/messages/","Interact with other members of Approachable Art!"]], 
     
     "Profile":[["User Profile","/userprofile/","Edit your profile here!"],["Terms of Service", "/tos/","The legal stuff!"],["Photo Upload", "/upload", "Upload your user profile photo here."],],
     
-    "Contact":[["Conact us","/contact/","Get in touch, we would love to hear from you."],],
 }
+
+
 
 @app.route("/", methods = ["GET", "POST"])
 def hello():
@@ -107,6 +108,8 @@ def logout():
     flash("You have been logged out!")
     gc.collect()
     return redirect(url_for("login"))
+
+
 
 class RegistrationForm(Form):
     username = TextField("Username", [validators.Length(min=4, max=20)])

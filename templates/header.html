@@ -64,24 +64,22 @@
       <li class="nav-item dropdown">
           {% if session.logged_in %}
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">palette</i>Profile</a> 
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="/logout/">Logout</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/dashboard/">Dashboard</a>
+                <a class="dropdown-item" href="/logout/">Logout</a>
             </div>
           {% else %}
            <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#"><i class="material-icons">palette</i>Profile</a>
           
         </li>
           {% endif %}
+    {% if session.logged_in %}
       <li class="nav-item">
-        <a class="nav-link" href="/dashboard/"><i class="material-icons">web</i>Gallery</a>
+        <a class="nav-link" href="/googleimg/"><i class="material-icons">web</i>Gallery</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">explore</i>Mediums</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/about/">Details</a>
-          <a class="dropdown-item" href="#">Artisans</a>
-          <a class="dropdown-item" href="#">Assemblage</a>
-        </div>
+    {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="/about/"><i class="material-icons">explore</i>Details</a>
       </li>
     </ul>
   </div>
