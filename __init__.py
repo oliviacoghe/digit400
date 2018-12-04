@@ -215,21 +215,22 @@ def downloader():
 @app.route("/googleimg/", methods =["GET", "POST"])
 def img_fetch():
     error = ''
+    artist_name = ''
     file_list = []
     try:
         if request.method == "POST":
             artist_name = request.form['arguments']
             file_names = image_fetcher(artist_name) #need to add permissions for google library here
             
-            vis_path = '/var/www/FlaskApp/FlaskApp/static/downloads/'
+            vis_path = '/var/www/FlaskApp/FlaskApp/static/downloads/'+artist_name
         
             for paths, subdirs, files in os.walk(vis_path):
                 for file in files:
                     a = os.path.join(file)
                     file_list.append(a)
-            return render_template('googleimg.html', error=error, file_list=file_list)
+            return render_template('googleimg.html', error=error, file_list=file_list, artist_name=artist_name)
         
-        return render_template('googleimg.html', error=error,file_list=file_list)
+        return render_template('googleimg.html', error=error,file_list=file_list, artist_name=artist_name)
             
     except Exception as e:
         return(str(e)) 
