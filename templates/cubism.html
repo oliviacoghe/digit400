@@ -1,12 +1,16 @@
 {% extends "header.html" %}
 
-{% block body %}
+{% block body %}  
+
+<script>
+('popoverData').popover();
+</script>
 <div class="container" >
     <hr>
-<h1 style="text-align:center;">Cubism</h1>
+<h1 style="text-align:center">Cubism</h1>
     <h2 style="text-align: center">A bunch of shapes or something more?</h2>
     
-    <img style="img-align:center;" src="{{ url_for('static', filename='images/picasso.jpg') }}" width="250" height="300">
+    <img id="main_pic" src="{{ url_for('static', filename='images/picasso.jpg') }}" width="250" height="300">
     
     <hr>
     
@@ -16,7 +20,7 @@
 
     <p>The style and influences of Cubism have been linked to Primitivism and non-western sources, like in African art.</p> 
 
-    <p>Cubist painters did not want their art to copy nature or conform to the traditional techniques used during that time. They wanted to emphasize that the canvas could have many dimensions. To do this, they used geometric forms, shadows, and light, as well as multiple perspective points of the subjects they were painting.</p>
+    <p>Cubist painters did not want their art to copy nature or conform to the traditional techniques used during that time. They wanted to emphasize that the canvas could have many dimensions. To do this, they used word geometric forms, shadows, and light, as well as multiple perspective points of the subjects they were painting.</p>
 
     <p>In 1910, cubism took a turn and the art was then dissected and analyzed for specific figures and objects. This period in Cubist art was known as Analytic Cubism - also called “hermetic” but that’s not super important. </p>
 

@@ -219,16 +219,15 @@ def img_fetch():
     try:
         if request.method == "POST":
             artist_name = request.form['arguments']
-
-            paths = image_fetcher(artist_name) #need to add permissions for google library here
-            vis_path = '/var/www/FlaskApp/FlaskApp/downloads/'
+            file_names = image_fetcher(artist_name) #need to add permissions for google library here
+            
+            vis_path = '/var/www/FlaskApp/FlaskApp/static/downloads/'
         
             for paths, subdirs, files in os.walk(vis_path):
                 for file in files:
                     a = os.path.join(file)
                     file_list.append(a)
-            
-            return render_template('googleimg.html',error=error,file_list=file_list)
+            return render_template('googleimg.html', error=error, file_list=file_list)
         
         return render_template('googleimg.html', error=error,file_list=file_list)
             
@@ -286,9 +285,6 @@ def sitemap():
     except Exception as e:
         return(str(e))
     
-
-
-
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html")

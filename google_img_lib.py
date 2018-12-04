@@ -3,10 +3,10 @@
 from google_images_download import google_images_download
 def image_fetcher(artist_name):
     response = google_images_download.googleimagesdownload()
-    DOWNLOADS = "/var/www/FlaskApp/FlaskApp/downloads"
     # you can type anything for keywords
-    arguments = {"keywords":artist_name,"limit":10,"print_urls":True, "no_directory": True}   
+    arguments = {"keywords":artist_name,"limit":10,"no_numbering":True,"output_directory":"/var/www/FlaskApp/FlaskApp/static/", "image_directory":"downloads"}   
     paths = response.download(arguments)
-    return paths
+    return
+#image_fetcher("dali")
 
 # a folder labbed downloads should appear on your desktop 

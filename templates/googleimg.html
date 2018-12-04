@@ -20,9 +20,11 @@
 
 	  </div>
 
-{{file_list}}
 
-{{artist_name}}
+    
+{% for file in file_list %}
+<img src="/static/downloads/{{file}}">
+{% endfor %}
 
 
 {% endblock %}
