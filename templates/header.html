@@ -33,7 +33,21 @@
             })
       </script>
       
-      <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+      <!-- Popover -->
+      <script>
+      $(function () {
+          $('[data-toggle="popover"]').popover()
+        });
+          $(function () {
+  $('.example-popover').popover({
+    container: 'body'
+  })
+});
+          $('.popover-dismiss').popover({
+  trigger: 'focus'
+})
+      </script>
+      
      <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128138146-1"></script>
     <script>
@@ -165,10 +179,9 @@
     <div class="col-6 col-md">
       <h5>Features</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">Cool stuff</a></li>
-        <li><a class="text-muted" href="#">Random feature</a></li>
-        <li><a class="text-muted" href="#">Team feature</a></li>
-        <li><a class="text-muted" href="#">Stuff for developers</a></li>
+        <li><a class="text-muted" href="/">Home</a></li>
+        <li><a class="text-muted" href="/profile/">Profile</a></li>
+        <li><a class="text-muted" href="/googleimg/">Gallery</a></li>
       </ul>
     </div>
     <div class="col-6 col-md">
@@ -182,9 +195,9 @@
     <div class="col-6 col-md">
       <h5>About</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">Team</a></li>
-        <li><a class="text-muted" href="#">Locations</a></li>
-        <li><a class="text-muted" href="#">Privacy</a></li>
+        <li><a class="text-muted" href="/about/">About</a></li>
+        <li><a class="text-muted" href="/contact/">Contact</a></li>
+        <li><a class="text-muted" href="/forum/">Forum</a></li>
         <li><a class="text-muted" href="#">Terms</a></li>
       </ul>
     </div>

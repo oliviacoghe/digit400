@@ -1,6 +1,7 @@
 {% extends "header.html" %}
 {% block body %}
-  <div class="container">
+<br>
+  <div style="text-align: center" class="container">
 
       <h1>Google Image Library of Artists</h1>
       <p>Please enter an artists' last name! Try Dali</p>
@@ -20,8 +21,15 @@
 
 	  </div>
 
-<div class="container">
-<div id="carouselExampleControls" class="carousel slide h-75 w-75 p-3" data-ride="carousel">
+<style>
+.carousel img {
+     width: 100%;
+     height: 80%;
+}
+</style>
+
+<div class="container-fluid">
+<div id="carouselExampleControls" class="carousel slide p-3" data-ride="carousel">
   <div class="carousel-inner">
         {% if file_list != [] %}
       {% for file in file_list %}

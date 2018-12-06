@@ -27,6 +27,8 @@
     <title>Approachable Art</title>
       
       <!-- Modal Initialization -->
+      
+      
       <script>
       $('#myModal').on('shown.bs.modal', function () {
           $('#myInput').trigger('focus')
@@ -48,6 +50,8 @@
       
   </head>
   <body>
+      
+    
    
        <!-- Nav Bar -->
       
@@ -93,6 +97,8 @@
   </div>
 </nav>
       
+
+      
       <div style="text-align:center">
       <img class = "center-block;" src="{{ url_for('static', filename='images/approachableart.png') }}" width="264" height="275">
       </div>
@@ -100,11 +106,39 @@
       
 
 <!-- Pinterest Code -->
+<style>
+     @media (min-width: 30em) {
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+}
+      @media (min-width: 38em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 48em) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}
+
+    .button{
+        align-items: center;
+    }
+      
+</style>
       
 
-<div class="container">
+<div class="container-fluid">
      <div class="card-columns">
-   <div class="card text-center">
       <div class="card bg-primary text-white text-center p-3">
     <blockquote class="blockquote mb-0">
       <p>"There are no mistakes, only happy accidents."</p>
@@ -113,8 +147,8 @@
            <cite title="Source Title">Bob Ross</cite>
         </small>
       </footer>
+        <button type="button" class="btn btn-warning"><a href="/bobRoss/">Read more!</a></button>
     </blockquote>
-  </div>
   </div>
   <div class="card">
     <img class="card-img-top" src="{{ url_for('static', filename='images/impressionism.jpg') }}" alt="Card image cap">
@@ -145,12 +179,13 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Cubism</h5>
+        <img class="card-img" src="{{ url_for('static', filename='images/picasso.jpg') }}" alt="Card image">
+        <hr>
       <p class="card-text">The movement was started by Pablo Picasso and Georges Braque in Paris between 1907 and 1914. </p>
-    </div>
       <button type="button" class="btn btn-warning"><a href="/cubism/">Read more!</a></button>
-      <hr>
-      <img class="card-img-top" src="{{ url_for('static', filename='images/picasso.jpg') }}" alt="Card image cap">
+      </div>
   </div>
+          
   <div class="card p-3 text-right">
     <blockquote class="blockquote mb-0">
       <p>"The best reason to paint is that there is no reason to paint."</p>
@@ -176,11 +211,12 @@
     <div class="card-body">
       <h5 class="card-title">Color Theory</h5>
       <p class="card-text">I am sure you learned this in elementary school art class, you just didn't know it.</p>
-    </div>
       <button type="button" class="btn btn-warning"><a href="#">Read more!</a></button>
-      <hr> 
+      </div>
   </div>
-         
+    <div class="card">
+    <img class="card-img" src="{{ url_for('static', filename='images/pollock.jpg') }}" alt="Card image">
+  </div>    
   <div class="card text-left">
     <div class="card-body">
       <h5 class="card-title">Baroque</h5>
@@ -188,9 +224,6 @@
       <button type="button" class="btn btn-warning"><a href="#">Read more!</a></button>
       <br>
     </div>
-  </div>
-  <div class="card">
-    <img class="card-img" src="{{ url_for('static', filename='images/pollock.jpg') }}" alt="Card image">
   </div>
   <div class="card p-3 text-right">
     <blockquote class="blockquote mb-0">
@@ -208,16 +241,6 @@
       <p class="card-text">The Greeks are known for there marbel statues and architecture! Many other countries modeled their art after these Greek treasures.</p>
       <button type="button" class="btn btn-warning"><a href="#">Read more!</a></button>
     </div>
-      <div class="card p-3 text-right">
-    <blockquote class="blockquote mb-0">
-      <p>"Art is my life and my life is art."</p>
-      <footer class="blockquote-footer">
-        <small class="text-muted">
-           <cite title="Source Title">Yoko Ono</cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Vincent Van Gogh</h5>
@@ -226,8 +249,19 @@
     </div>
   </div>
 </div>
+<div class="card bg-primary text-white text-center p-3">
+    <blockquote class="blockquote mb-0">
+      <p>"Art is my life and my life is art."</p>
+      <footer class="blockquote-footer">
+        <small>
+           <cite title="Source Title">Yoko Ono</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
     </div>
       </div>
+      
     
   
 <!-- Button trigger modal -->
@@ -257,7 +291,7 @@
           </form>
           <br>
           <code>{{error}}</code>
-          <hr>
+          <br>
           <h5>Register a new account!</h5>
           <p>Click here to be redirected to our <a href="/register/">registration page!</a></p>
       </div>
@@ -278,10 +312,9 @@
     <div class="col-6 col-md">
       <h5>Features</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">Cool stuff</a></li>
-        <li><a class="text-muted" href="#">Random feature</a></li>
-        <li><a class="text-muted" href="#">Team feature</a></li>
-        <li><a class="text-muted" href="#">Stuff for developers</a></li>
+        <li><a class="text-muted" href="/">Home</a></li>
+        <li><a class="text-muted" href="/profile/">Profile</a></li>
+        <li><a class="text-muted" href="/googleimg/">Gallery</a></li>
       </ul>
     </div>
     <div class="col-6 col-md">
@@ -295,9 +328,9 @@
     <div class="col-6 col-md">
       <h5>About</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">Team</a></li>
-        <li><a class="text-muted" href="#">Locations</a></li>
-        <li><a class="text-muted" href="#">Privacy</a></li>
+        <li><a class="text-muted" href="/about/">About</a></li>
+        <li><a class="text-muted" href="/contact/">Contact</a></li>
+        <li><a class="text-muted" href="/forum/">Forum</a></li>
         <li><a class="text-muted" href="#">Terms</a></li>
       </ul>
     </div>

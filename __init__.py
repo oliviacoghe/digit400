@@ -38,7 +38,7 @@ def allowed_file(filename):
 APP_CONTENT = {
     "Home":[["My Home","/","Welcome back! see what new stories are available for you."],["Gallery","/googleimg/","Explore the gallery and discover what you want to learn next."],["Forum","/forum/","Interact with other members of Approachable Art!"]], 
     
-    "Profile":[["User Profile","/userprofile/","Edit your profile here!"],["Photo Upload", "/uploads/", "Upload your user profile photo here."],["Contact Us", "/contact/","Reach out and let us know whats up!"],],
+    "Profile":[["User Profile","/user/","Edit your profile here!"],["Photo Upload", "/uploads/", "Upload your user profile photo here."],["Contact Us", "/contact/","Reach out and let us know whats up!"],],
     
 }
 
@@ -58,13 +58,14 @@ def hello():
                 session['logged_in'] = True
                 session['username'] = request.form['username']
                 
-                flash("You are now logged in" + session['username'])
+                flash("You are now logged in " + session['username'])
                 return redirect(url_for("dashboard"))
             else:
                 error = "Invalid Credentials. Please Try Again."
                 return render_template("login.html", error = error)
         else:
             return render_template("main.html")
+                
     except Exception as e:
         return render_template("500.html", error = e)
     
@@ -78,6 +79,15 @@ def templating():
         
     except Exception as e:
         return(str(e)) 
+
+
+@app.route("/user/")
+@login_required
+def user():
+    try:
+        return render_template("user.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
     
 @app.route("/login/", methods = ["GET", "POST"])
 def login():    
@@ -94,8 +104,8 @@ def login():
                 session['logged_in'] = True
                 session['username'] = request.form['username']
                 
-                flash("You are now logged in " + session['username'])
-                return redirect(url_for("dashboard"))
+                flash("You are now logged in " + session[' username'])
+                return redirect(url_for('dashboard'))
             else:
                 error = "Invalid credentials. Try again!"
                 return render_template("login.html", error = error)
@@ -262,11 +272,18 @@ def VincentVanGogh():
         return render_template("VincentVanGogh.html")
     except Exception as e:
         return render_template("500.html", error = e)
+    
+@app.route("/bobRoss/")
+def bobRoss():
+    try:
+        return render_template("bobRoss.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
 
 @app.route("/random/")
 def random():
     import random
-    pages = ['cubism','Baroque', 'VincentVanGogh']
+    pages = ['cubism','Baroque', 'VincentVanGogh', 'bobRoss']
     choice_page = random.choice(pages)
     return redirect(url_for(choice_page))
 

@@ -2,27 +2,35 @@
 
 {% block body %}  
 
-<script>
-('popoverData').popover();
-</script>
+
+
 <div class="container" >
     <hr>
 <h1 style="text-align:center">Cubism</h1>
     <h2 style="text-align: center">A bunch of shapes or something more?</h2>
     
-    <img id="main_pic" src="{{ url_for('static', filename='images/picasso.jpg') }}" width="250" height="300">
+    <div style="text-align: center">
+    <img src="{{ url_for('static', filename='images/picasso.jpg') }}" width="250" height="300">
+    </div>
     
     <hr>
+    
+   <!-- <button type="button" class="btn btn-secondary" data-container="body" data-toggle="example-popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on top
+</button>  -->
+    
+   <!-- <span title="Hello"> Hi</span> --> 
     
     <p>Cubism is an early 20th-century style and movement in art, especially painting, in which perspective of multiple objects was considered, and use was made of simple geometric shapes, interlocking planes, and collage.</p>
 
     <p>The movement was started by Pablo Picasso and Georges Braque in Paris between 1907 and 1914.</p> 
 
-    <p>The style and influences of Cubism have been linked to Primitivism and non-western sources, like in African art.</p> 
+    <p>The style and influences of Cubism have been linked to <span title="a belief in the value of what is simple and unsophisticated,
+        expressed as a philosophy of life or through art or literature."><strong>Primitivism</strong></span> and non-western sources, like in African art.</p> 
 
     <p>Cubist painters did not want their art to copy nature or conform to the traditional techniques used during that time. They wanted to emphasize that the canvas could have many dimensions. To do this, they used word geometric forms, shadows, and light, as well as multiple perspective points of the subjects they were painting.</p>
 
-    <p>In 1910, cubism took a turn and the art was then dissected and analyzed for specific figures and objects. This period in Cubist art was known as Analytic Cubism - also called “hermetic” but that’s not super important. </p>
+    <p>In 1910, cubism took a turn and the art was then dissected and analyzed for specific figures and objects. This period in Cubist art was known as Analytic Cubism - also called <span title="relating to an ancient occult tradition encompassing alchemy, astrology, and theosophy."><strong>“hermetic”</strong></span> but that’s not super important. </p>
 
     <p>Common subjects of these paintings were still lifes with musical instruments, bottles, pitchers, glasses, newspapers playing cards, and the human face and figure. </p>
 
@@ -39,7 +47,7 @@
     <a href="https://www.theartstory.org/movement-cubism.htm">The Art Story</a>
 <br>
     <a href="https://www.guggenheim.org/artwork/movement/cubism"> The Guggenheim</a>
-    <hr>
+   
 </div>
 
 {% endblock %}
