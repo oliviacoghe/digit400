@@ -273,17 +273,31 @@ def VincentVanGogh():
     except Exception as e:
         return render_template("500.html", error = e)
     
+@app.route("/impressionism/")
+def impressionism():
+    try:
+        return render_template("impressionism.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
+    
 @app.route("/bobRoss/")
 def bobRoss():
     try:
         return render_template("bobRoss.html")
     except Exception as e:
         return render_template("500.html", error = e)
+    
+@app.route("/pollock/")
+def pollock():
+    try:
+        return render_template("pollock.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
 
 @app.route("/random/")
 def random():
     import random
-    pages = ['cubism','Baroque', 'VincentVanGogh', 'bobRoss']
+    pages = ['cubism','Baroque', 'VincentVanGogh', 'bobRoss', 'impressionism', 'pollock']
     choice_page = random.choice(pages)
     return redirect(url_for(choice_page))
 

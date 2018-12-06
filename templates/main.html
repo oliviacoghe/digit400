@@ -107,7 +107,7 @@
 
 <!-- Pinterest Code -->
 <style>
-     @media (min-width: 30em) {
+     @media (min-width: 26em) {
     .card-columns {
         -webkit-column-count: 1;
         -moz-column-count: 1;
@@ -155,7 +155,7 @@
     <div class="card-body">
       <h5 class="card-title">Impressionism</h5>
       <p class="card-text">A movement in painting that originated in France and was charaterized by effects of light and color.</p>
-        <button type="button" class="btn btn-warning"><a href="#">Read more!</a></button>
+        <button type="button" class="btn btn-warning"><a href="/impressionism">Read more!</a></button>
     </div>
   </div>
   <div class="card p-3">
@@ -214,9 +214,14 @@
       <button type="button" class="btn btn-warning"><a href="#">Read more!</a></button>
       </div>
   </div>
-    <div class="card">
-    <img class="card-img" src="{{ url_for('static', filename='images/pollock.jpg') }}" alt="Card image">
-  </div>    
+     <div class="card">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/pollock.jpg') }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Jackson Pollock</h5>
+      <p class="card-text">An American painter and major figure of the abstract expressionist movement, well known for his unique drip paintings. </p>
+        <button type="button" class="btn btn-warning"><a href="/pollock/">Read more!</a></button>
+    </div>
+  </div>   
   <div class="card text-left">
     <div class="card-body">
       <h5 class="card-title">Baroque</h5>
