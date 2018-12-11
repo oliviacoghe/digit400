@@ -38,7 +38,7 @@ def allowed_file(filename):
 APP_CONTENT = {
     "Home":[["My Home","/","Welcome back! see what new stories are available for you."],["Gallery","/googleimg/","Explore the gallery and discover what you want to learn next."],["Forum","/forum/","Interact with other members of Approachable Art!"]], 
     
-    "Profile":[["User Profile","/user/","Edit your profile here!"],["Photo Upload", "/uploads/", "Upload your user profile photo here."],["Contact Us", "/contact/","Reach out and let us know whats up!"],],
+    "Profile":[["User Profile","/profile/","Edit your profile here!"],["Photo Upload", "/uploads/", "Upload your user profile photo here."],["Contact Us", "/contact/","Reach out and let us know whats up!"],],
     
 }
 
