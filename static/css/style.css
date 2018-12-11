@@ -1,5 +1,4 @@
-
-
+@import url('https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro');
 
 
 .card-columns {
@@ -15,5 +14,10 @@
 }
 
 
+p, li {
+    font-family: 'Source Sans Pro', sans-serif;
+}
 
-
+h1, h2, h5 {
+    font-family: 'Raleway', sans-serif;
+}

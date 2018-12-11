@@ -10,7 +10,7 @@ import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from google_images_download import google_images_download
 from google_img_lib import image_fetcher
 import random
-import pickle
+
 
 from db_connect import connection 
 from database import database 
@@ -105,7 +105,7 @@ def login():
                 session['username'] = request.form['username']
                 
                 flash("You are now logged in " + session[' username'])
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('dashboard.html'))
             else:
                 error = "Invalid credentials. Try again!"
                 return render_template("login.html", error = error)
@@ -223,6 +223,7 @@ def downloader():
 
 
 @app.route("/googleimg/", methods =["GET", "POST"])
+@login_required
 def img_fetch():
     error = ''
     artist_name = ''
@@ -253,6 +254,7 @@ def about():
         return render_template("500.html", error = e)
     
 @app.route("/cubism/")
+@login_required
 def cubism():
     try:
         return render_template("cubism.html")
@@ -260,6 +262,7 @@ def cubism():
         return render_template("500.html", error = e)
     
 @app.route("/Baroque/")
+@login_required
 def Baroque():
     try:
         return render_template("Baroque.html")
@@ -267,6 +270,7 @@ def Baroque():
         return render_template("500.html", error = e)
     
 @app.route("/VincentVanGogh/")
+@login_required
 def VincentVanGogh():
     try:
         return render_template("VincentVanGogh.html")
@@ -274,6 +278,7 @@ def VincentVanGogh():
         return render_template("500.html", error = e)
     
 @app.route("/impressionism/")
+@login_required
 def impressionism():
     try:
         return render_template("impressionism.html")
@@ -281,6 +286,7 @@ def impressionism():
         return render_template("500.html", error = e)
     
 @app.route("/bobRoss/")
+@login_required
 def bobRoss():
     try:
         return render_template("bobRoss.html")
@@ -288,6 +294,7 @@ def bobRoss():
         return render_template("500.html", error = e)
     
 @app.route("/pollock/")
+@login_required
 def pollock():
     try:
         return render_template("pollock.html")
@@ -295,6 +302,7 @@ def pollock():
         return render_template("500.html", error = e)
 
 @app.route("/random/")
+@login_required
 def random():
     import random
     pages = ['cubism','bobRoss', 'impressionism', 'pollock']
