@@ -254,31 +254,14 @@ def about():
         return render_template("500.html", error = e)
     
 @app.route("/cubism/")
-@login_required
 def cubism():
     try:
         return render_template("cubism.html")
     except Exception as e:
         return render_template("500.html", error = e)
     
-@app.route("/Baroque/")
-@login_required
-def Baroque():
-    try:
-        return render_template("Baroque.html")
-    except Exception as e:
-        return render_template("500.html", error = e)
-    
-@app.route("/VincentVanGogh/")
-@login_required
-def VincentVanGogh():
-    try:
-        return render_template("VincentVanGogh.html")
-    except Exception as e:
-        return render_template("500.html", error = e)
     
 @app.route("/impressionism/")
-@login_required
 def impressionism():
     try:
         return render_template("impressionism.html")
@@ -286,7 +269,6 @@ def impressionism():
         return render_template("500.html", error = e)
     
 @app.route("/bobRoss/")
-@login_required
 def bobRoss():
     try:
         return render_template("bobRoss.html")
@@ -294,18 +276,51 @@ def bobRoss():
         return render_template("500.html", error = e)
     
 @app.route("/pollock/")
-@login_required
 def pollock():
     try:
         return render_template("pollock.html")
     except Exception as e:
         return render_template("500.html", error = e)
+    
+@app.route("/principles/")
+def principles():
+    try:
+        return render_template("principles.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
+    
+@app.route("/modern/")
+def modern():
+    try:
+        return render_template("modern.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
+
+@app.route("/colorTheory/")
+def colorTheory():
+    try:
+        return render_template("colorTheory.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
+
+@app.route("/Haring/")
+def Haring():
+    try:
+        return render_template("Haring.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
+    
+@app.route("/anselAdams/")
+def anselAdams():
+    try:
+        return render_template("anselAdams.html")
+    except Exception as e:
+        return render_template("500.html", error = e)
 
 @app.route("/random/")
-@login_required
 def random():
     import random
-    pages = ['cubism','bobRoss', 'impressionism', 'pollock']
+    pages = ['cubism','bobRoss', 'impressionism', 'pollock', 'principles','modern', 'colorTheory','Haring','anselAdams', ]
     choice_page = random.choice(pages)
     return redirect(url_for(choice_page))
 
