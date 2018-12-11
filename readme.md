@@ -28,7 +28,10 @@ This is a web application project for DIGIT 400 at Penn State Behrend. The aim o
 * _ _ init _ _ .py in FlaskApp 
 
 #### How to begin:
-* set up init.py file 
+* set up _ _ init _ _ .py file 
+* create other folders 
+* set up main.html
+* set up style.css 
 
 ## Acknowledgments
 
