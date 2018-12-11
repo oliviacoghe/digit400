@@ -297,7 +297,7 @@ def pollock():
 @app.route("/random/")
 def random():
     import random
-    pages = ['cubism','Baroque', 'VincentVanGogh', 'bobRoss', 'impressionism', 'pollock']
+    pages = ['cubism','bobRoss', 'impressionism', 'pollock']
     choice_page = random.choice(pages)
     return redirect(url_for(choice_page))
 
