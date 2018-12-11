@@ -23,7 +23,7 @@ This is a web application project for DIGIT 400 at Penn State Behrend. The aim o
 * datetime 
 
 ### Organization of important files:
-* templates - contains all pages created dynmically with html, python, and bootstrap
+* templates - contains all pages created dynamically with html, python, and bootstrap
 * static - contains images, js, css, and download directories for "gallery" page
 * _ _ init _ _ .py in FlaskApp 
 
